@@ -26,3 +26,4 @@ EXPOSE 80
 
 # Comando para rodar o NGINX
 CMD ["nginx", "-g", "daemon off;"]
+# Forçando atualização
