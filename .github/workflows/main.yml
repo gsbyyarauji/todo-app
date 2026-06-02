@@ -38,5 +38,5 @@ jobs:
       - name: Deploy no Azure Web App for Containers
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'meu-todo-app-azure' # Nome do seu App Service no Azure
+          app-name: 'meu-todo-app-azure-gabrielly' # Nome do seu App Service no Azure
           images: '${{ secrets.DOCKERHUB_USERNAME }}/todo-app:latest'
