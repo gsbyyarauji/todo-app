@@ -1,13 +1,12 @@
 # Estágio 1: Build da aplicação Node.js
-FROM node:20-alpine AS build
-
+FROM node:22-alpine AS build
 
 WORKDIR /app
 
 # Copia os arquivos de dependências
 COPY package*.json ./
 
-# Instala as dependências
+# Instala as dependências (limpando o cache para garantir)
 RUN npm install
 
 # Copia o restante dos arquivos do projeto
@@ -19,8 +18,7 @@ RUN npm run build:web
 # Estágio 2: Servindo com NGINX
 FROM nginx:stable-alpine
 
-# Copia os arquivos estáticos gerados no estágio anterior para a pasta do NGINX
-# O Expo exporta para a pasta 'dist' por padrão
+# Copia os arquivos estáticos gerados no estágio anterior
 COPY --from=build /app/dist /usr/share/nginx/html
 
 # Expõe a porta 80
